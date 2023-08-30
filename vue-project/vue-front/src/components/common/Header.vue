@@ -7,6 +7,7 @@
       <nav id="nav">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/welcome">WelCome</RouterLink>
+        <RouterLink to="/board">Board</RouterLink>
       </nav>
     </div>
   </header>
