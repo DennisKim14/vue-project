@@ -9,7 +9,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors({
-  origin: '127.0.0.1:5173'
+  credentials: true,
+  origin: 'http://localhost:5173'
 }))
 
 const MongoClient = require('mongodb').MongoClient;
@@ -38,9 +39,5 @@ files.forEach(file => {
     const fileNameArr = file.split('.');
     app.use('/' + fileNameArr[0].toLowerCase(), require('./route/' + file));
 })
-
-app.listen(52273, function() {
-  console.log('Server Running at http://127.0.0.1:52273');
-});
 
 module.exports = app;

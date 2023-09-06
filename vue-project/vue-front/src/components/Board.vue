@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import { onMounted, ref, inject } from 'vue';
+import { onMounted, ref } from 'vue';
 import axios from 'axios'
 
-let items = ref([]);
+let items = ref<any>([]);
 
 onMounted(async () => {
-    const res = await axios.get('http://localhost:52273/Board');
-    items = res.data.list;
-    console.log(items)
-}
+    await axios.get('http://localhost:52273/Board')
+    .then(res => {
+        items.value = res.data.list;
+    }).catch(err => {
+        console.log(err)
+    });
+})
 
-)
-
-function viewBoard() {
-    
-}
-
-function modifyBoard() {
-    
-}
-
-function deleteBoard() {
-    
+async function deleteBoard(_id: string) {
+    await axios.delete(`http://localhost:52273/Board/delete/${_id}`)
+    .then(res => {
+        console.log(res.data);
+    }).catch(err => {
+        console.log(err)
+    });
 }
 </script>
 
@@ -35,18 +33,17 @@ function deleteBoard() {
                   <td></td>
               </tr>
           </thead>
-          <tbody v-for="(a, index) in items" :key="a._id">
+          <tbody v-for="(board, index) in items" :key="board._id">
               <tr>
-                  <td><span @click="viewBoard()">{{ index + 1 }}</span></td>
-                  <td><span>{{ a.name }}</span></td>
+                  <td><span>{{ index + 1 }}</span></td>
+                  <td><span><RouterLink :to="{path: '/board/form/' + board._id}">{{ board.title }}</RouterLink></span></td>
                   <td>
-                      <button class="" @click="modifyBoard()">수정</button>
-                      <button class="" @click="deleteBoard()">삭제</button>
+                      <button class="" @click="deleteBoard(board._id)">삭제</button>
                   </td>
               </tr>
           </tbody>
         </table>
-        <button class="writeBtn">글쓰기</button>
+        <button class="writeBtn"><RouterLink to="/board/form">글쓰기</RouterLink></button>
     </div>
 </template>
 

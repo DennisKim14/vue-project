@@ -9,7 +9,7 @@
 import Header from "./components/common/Header.vue";
 import Footer from "./components/common/Footer.vue";
 
-const logo_src = "src/assets/logo.svg";
+const logo_src = "/src/assets/logo.svg";
 const app_name = "Vue-Project";
 </script>
 
@@ -22,8 +22,8 @@ body {
 }
 
 .body {
-  background-color: #ffffff;
-  color: #222;
+  background-color: #2f2f2f;
+  color: #ffffff;
 }
 
 .main-container {

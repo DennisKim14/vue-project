@@ -20,8 +20,8 @@ module.exports = {
                         // useNewUrlParser: true,
                         // useUnifiedTopology: true,
                         // replicaSet: Config.DATABASE.REPLI_NAME,
-                        // connectTimeoutMS: 300000,
-                        // readPreference: 'nearest'
+                        connectTimeoutMS: 300000,
+                        readPreference: 'nearest'
                     });
                 MongoDBClient = mongoClient;
                 resolve({

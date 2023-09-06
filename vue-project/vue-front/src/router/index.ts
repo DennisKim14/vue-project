@@ -12,12 +12,22 @@ const router = createRouter({
         {
           path: "/welcome",
           name: "welcome",
-          component: () => import("../components/TheWelCome.vue"),
+          component: () => import("../components/TheWelcome.vue"),
         },
         {
           path: "/board",
           name: "board",
           component: () => import("../components/Board.vue"),
+        },
+        {
+          path: "/board/form",
+          name: "boardForm",
+          component: () => import("../components/BoardForm.vue"),
+        },
+        {
+          path: "/board/form/:_id",
+          name: "boardView",
+          component: () => import("../components/BoardForm.vue"),
         }
     ]
 
