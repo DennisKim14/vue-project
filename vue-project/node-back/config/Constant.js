@@ -2,7 +2,7 @@ module.exports = {
     DATABASE: {
         POOL_SIZE: 10,
         HOST: [
-            {NAME: 'localhost', PORT: 27017}
+            {NAME: '127.0.0.1', PORT: 27017}
         ],
         NAME: 'vue-project',
         USER_ID: '',
